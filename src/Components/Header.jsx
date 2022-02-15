@@ -10,16 +10,12 @@ const HeaderContainer = styled.div`
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 60vh;
+    height: 40%;
     overflow: hidden;
     box-sizing: border-box;
 
     @media ${style.media.sm} {
-        height: 30vh;
-    }
-
-    @media ${style.media.md} {
-        height: 50vh;
+        height: 30%;
     }
 `;
 
