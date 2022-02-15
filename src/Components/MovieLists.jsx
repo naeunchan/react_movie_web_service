@@ -15,7 +15,6 @@ const StyledButton = withStyles({
             background: "transparent",
             color: `${style.color.gray}`,
             fontSize: "1rem",
-            margin: "1.5rem",
 
             "&:hover": {
                 color: `${style.color.white}`,
@@ -39,7 +38,7 @@ const MovieListsContainer = styled.div`
 const PosterContainer = styled.div`
     display: flex;
     position: relative;
-    width: 60%;
+    width: 80%;
     flex-wrap: wrap;
     justify-content: center;
 `;
@@ -47,7 +46,7 @@ const PosterContainer = styled.div`
 const PosterImage = styled.div`
     padding: 1rem;
     box-sizing: border-box;
-    width: 20%;
+    max-width: 20%;
     display: flex;
     flex: auto;
     min-width: 170px;
@@ -57,6 +56,8 @@ const PosterImage = styled.div`
 const StyledImg = styled.img`
     width: 100%;
     height: 100%;
+    border-radius: 16px;
+    object-fit: cover;
     cursor: pointer;
 `;
 
