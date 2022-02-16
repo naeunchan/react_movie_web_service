@@ -6,6 +6,7 @@ import { SearchContext } from "../store/SearchState";
 import { getMovieListsByTitle, getMovieInformationByID } from "../api";
 import style from "../style";
 import { withStyles } from "@mui/styles";
+import MovieInfoModal from "./MovieInfoModal";
 
 const StyledButton = withStyles({
     root: {
@@ -44,6 +45,7 @@ const PosterContainer = styled.div`
 `;
 
 const PosterImage = styled.div`
+    position: relative;
     padding: 1rem;
     margin: 1rem 0;
     box-sizing: border-box;
@@ -70,6 +72,7 @@ const StyledImg = styled.img`
 const MovieLists = () => {
     const { movieLists, setLoading, setMovieLists } = useContext(LoadingContext);
     const { state, changePage } = useContext(SearchContext);
+    const [modal, setModal] = useState(false);
 
     const handelClick = async () => {
         const { data, totalResults } = movieLists;
@@ -90,12 +93,16 @@ const MovieLists = () => {
         const index = e.target.id;
         const id = movieLists.data[index].imdbID;
 
+        setLoading(true);
+        setModal(true);
         const info = await getMovieInformationByID(id);
-        console.log(info);
+
+        setLoading(false);
     };
 
     return (
         <MovieListsContainer>
+            {modal && <MovieInfoModal />}
             <PosterContainer>
                 {movieLists.data &&
                     movieLists.data.map((movie, index) => (
@@ -103,7 +110,7 @@ const MovieLists = () => {
                             <StyledImg
                                 id={index}
                                 src={movie.Poster}
-                                alt={movie.title}
+                                alt={movie.Title}
                                 onClick={handleClickedPoster}
                             />
                         </PosterImage>

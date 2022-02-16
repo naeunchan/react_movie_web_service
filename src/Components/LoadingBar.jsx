@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ClipLoader from "react-spinners/ClipLoader";
+import PacmanLoader from "react-spinners/PacmanLoader";
 
 const ModalBackground = styled.div`
     position: fixed;
@@ -9,7 +9,7 @@ const ModalBackground = styled.div`
     width: 100vw;
     height: 100vh;
     z-index: 100;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.9);
 `;
 
 const ModalContainer = styled.div`
@@ -23,10 +23,11 @@ const ModalContainer = styled.div`
 
 const LoadingBar = () => {
     const color = "#db0000";
+
     return (
         <ModalBackground>
             <ModalContainer>
-                <ClipLoader color={color} size={100} speedMultiplier={0.5} />
+                <PacmanLoader color={color} size={100} speedMultiplier={1} />
             </ModalContainer>
         </ModalBackground>
     );
