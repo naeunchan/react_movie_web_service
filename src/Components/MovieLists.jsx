@@ -45,6 +45,7 @@ const PosterContainer = styled.div`
 
 const PosterImage = styled.div`
     padding: 1rem;
+    margin: 1rem 0;
     box-sizing: border-box;
     max-width: 20%;
     display: flex;
@@ -59,6 +60,11 @@ const StyledImg = styled.img`
     border-radius: 16px;
     object-fit: cover;
     cursor: pointer;
+    transition: all ease-out 0.3s;
+
+    &:hover {
+        transform: scale(1.3);
+    }
 `;
 
 const MovieLists = () => {
