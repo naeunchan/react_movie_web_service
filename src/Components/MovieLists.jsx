@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Button from "@mui/material/Button";
 import { LoadingContext } from "../store/LoadingState";
@@ -7,6 +7,8 @@ import { getMovieListsByTitle, getMovieInformationByID } from "../api";
 import style from "../style";
 import { withStyles } from "@mui/styles";
 import MovieInfoModal from "./MovieInfoModal";
+import { ModalContext } from "../store/ModalState";
+import { InformationContext } from "./../store/InformationState";
 
 const StyledButton = withStyles({
     root: {
@@ -72,7 +74,8 @@ const StyledImg = styled.img`
 const MovieLists = () => {
     const { movieLists, setLoading, setMovieLists } = useContext(LoadingContext);
     const { state, changePage } = useContext(SearchContext);
-    const [modal, setModal] = useState(false);
+    const { modal, setModal } = useContext(ModalContext);
+    const { setInfo } = useContext(InformationContext);
 
     const handelClick = async () => {
         const { data, totalResults } = movieLists;
@@ -94,9 +97,10 @@ const MovieLists = () => {
         const id = movieLists.data[index].imdbID;
 
         setLoading(true);
-        setModal(true);
-        const info = await getMovieInformationByID(id);
+        const information = await getMovieInformationByID(id);
 
+        setInfo(information);
+        setModal(true);
         setLoading(false);
     };
 
