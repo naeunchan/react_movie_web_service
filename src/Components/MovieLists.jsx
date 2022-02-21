@@ -51,9 +51,9 @@ const PosterImage = styled.div`
     padding: 1rem;
     margin: 1rem 0;
     box-sizing: border-box;
-    max-width: 20%;
     display: flex;
     flex: auto;
+    max-width: 20%;
     min-width: 170px;
     min-height: 240px;
 `;

@@ -13,26 +13,30 @@ const ModalBackground = styled.div`
     width: 100vw;
     height: 100vh;
     z-index: 1000;
-    background-color: ${style.color.black};
-    opacity: 0.8;
+    background-color: rgba(0, 0, 0, 0.8);
 `;
 
 const ModalContainer = styled.div`
-    position: fixed;
+    position: absolute;
     display: flex;
     flex-direction: column;
-    top: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 80vw;
-    height: 100%;
+    height: auto;
     background-color: ${style.color.gray};
-    opacity: 1;
     border-radius: 16px;
+    overflow-x: hidden;
+    overflow-y: auto;
 `;
 
 const InfoContainer = styled.div`
+    position: relative;
     display: flex;
     width: 100%;
-    height: 60vh;
+    height: auto;
+    padding: 1rem;
     flex-direction: column;
 `;
 
@@ -42,10 +46,41 @@ const InfoWrapper = styled.div`
 
 const InfoKey = styled.div`
     font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 const InfoValue = styled.div`
     font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const PosterContainer = styled.div`
+    display: flex;
+    justify-content: end;
+
+    @media ${style.media.sm} {
+        width: 100%vw;
+        top: auto;
+        right: auto;
+        justify-content: center;
+        align-items: center;
+    }
+`;
+
+const PosterWrapper = styled.div`
+    display: flex;
+    width: 33.3%;
+    margin: 1rem;
+
+    @media ${style.media.sm} {
+        width: 50vw;
+        top: auto;
+        right: auto;
+    }
 `;
 
 const MovieInfoModal = (props) => {
@@ -59,7 +94,9 @@ const MovieInfoModal = (props) => {
     };
 
     const objectToArray = (obj) => {
-        return Object.keys(obj).map((key) => [key, obj[key]]);
+        return Object.keys(obj)
+            .filter((_, index) => index < 8)
+            .map((key) => [key, obj[key]]);
     };
 
     const getMovieInfo = () => {
@@ -81,10 +118,19 @@ const MovieInfoModal = (props) => {
             </InfoWrapper>
         ));
     };
-    console.log(info);
+
     return (
         <ModalBackground onClick={handleClickedModalBackground}>
             <ModalContainer>
+                <PosterContainer>
+                    <PosterWrapper>
+                        <img
+                            src={info.Poster}
+                            alt={info.Title}
+                            style={{ width: "100%", height: "100%", opacity: "1" }}
+                        />
+                    </PosterWrapper>
+                </PosterContainer>
                 <InfoContainer>{getMovieInfo()}</InfoContainer>
             </ModalContainer>
         </ModalBackground>
