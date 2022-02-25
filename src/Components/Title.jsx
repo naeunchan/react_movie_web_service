@@ -11,20 +11,22 @@ const TitleContainer = styled.div`
 
 const StyledTitle = styled.h1`
     color: #eb1c24;
-    font-family: "Modesta";
-    font-size: 10rem;
+    font-size: 130px;
+    letter-spacing: -10px;
+    word-spacing: -10px;
     margin: 5rem 0;
     text-align: center;
     white-space: nowrap;
     cursor: pointer;
 
     @media ${style.media.sm} {
-        font-size: 5rem;
-        margin: 1.5rem;
+        font-size: 50px;
+        letter-spacing: -5px;
+        word-spacing: 0px;
     }
 
     @media ${style.media.md} {
-        font-size: 8rem;
+        font-size: 110px;
     }
 `;
 

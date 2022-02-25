@@ -67,7 +67,8 @@ const StyledImg = styled.img`
     transition: all ease-out 0.3s;
 
     &:hover {
-        transform: scale(1.3);
+        transform: scale(1.2);
+        z-index: 10;
     }
 `;
 

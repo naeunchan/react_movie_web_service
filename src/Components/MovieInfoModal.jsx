@@ -19,12 +19,11 @@ const ModalBackground = styled.div`
 const ModalContainer = styled.div`
     position: absolute;
     display: flex;
-    flex-direction: column;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80vw;
-    height: auto;
+    width: 70vw;
+    height: 70vh;
     background-color: ${style.color.gray};
     border-radius: 16px;
     overflow-x: hidden;
@@ -42,45 +41,23 @@ const InfoContainer = styled.div`
 
 const InfoWrapper = styled.div`
     display: flex;
+    align-items: center;
 `;
 
 const InfoKey = styled.div`
     font-size: 1.3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 1rem;
 `;
 
 const InfoValue = styled.div`
     font-size: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 `;
 
 const PosterContainer = styled.div`
     display: flex;
     justify-content: end;
-
-    @media ${style.media.sm} {
-        width: 100%vw;
-        top: auto;
-        right: auto;
-        justify-content: center;
-        align-items: center;
-    }
-`;
-
-const PosterWrapper = styled.div`
-    display: flex;
-    width: 33.3%;
-    margin: 1rem;
-
-    @media ${style.media.sm} {
-        width: 50vw;
-        top: auto;
-        right: auto;
-    }
+    width: 100%;
+    padding: 1rem;
 `;
 
 const MovieInfoModal = (props) => {
@@ -107,10 +84,10 @@ const MovieInfoModal = (props) => {
                     {Array.isArray(v[1])
                         ? v[1].map((rating) =>
                               objectToArray(rating).map((r) => (
-                                  <InfoWrapper key={r[0]}>
+                                  <div key={r[0]}>
                                       <InfoKey>{r[0]}</InfoKey>
                                       <InfoValue>{r[1]}</InfoValue>
-                                  </InfoWrapper>
+                                  </div>
                               ))
                           )
                         : v[1]}
@@ -123,13 +100,11 @@ const MovieInfoModal = (props) => {
         <ModalBackground onClick={handleClickedModalBackground}>
             <ModalContainer>
                 <PosterContainer>
-                    <PosterWrapper>
-                        <img
-                            src={info.Poster}
-                            alt={info.Title}
-                            style={{ width: "100%", height: "100%", opacity: "1" }}
-                        />
-                    </PosterWrapper>
+                    <img
+                        src={info.Poster}
+                        alt={info.Title}
+                        style={{ width: "100%", height: "100%", opacity: "1", borderRadius: "8px" }}
+                    />
                 </PosterContainer>
                 <InfoContainer>{getMovieInfo()}</InfoContainer>
             </ModalContainer>

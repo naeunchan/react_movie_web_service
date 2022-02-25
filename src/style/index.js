@@ -5,11 +5,12 @@ const index = {
         lg: "(min-width: 1023px)",
     },
     color: {
-        red: "#db0000",
+        red: "#E50914",
         black: "#000000",
         white: "#ffffff",
-        gray: "#564d4d",
-        redDark: "#831010",
+        darkWhite: "#dedede",
+        gray: "#43465e",
+        navy: "#131834",
     },
 };
 export default index;
