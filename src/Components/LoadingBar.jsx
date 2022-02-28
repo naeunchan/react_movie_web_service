@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import PacmanLoader from "react-spinners/PacmanLoader";
+import DotLoader from "react-spinners/DotLoader";
 
 const ModalBackground = styled.div`
     position: fixed;
@@ -14,11 +14,10 @@ const ModalBackground = styled.div`
 
 const ModalContainer = styled.div`
     display: flex;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -100%);
 `;
 
 const LoadingBar = () => {
@@ -27,7 +26,7 @@ const LoadingBar = () => {
     return (
         <ModalBackground>
             <ModalContainer>
-                <PacmanLoader color={color} size={100} speedMultiplier={1} />
+                <DotLoader color={color} size={80} speedMultiplier={1} />
             </ModalContainer>
         </ModalBackground>
     );

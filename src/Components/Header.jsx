@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Title from "./Title";
 import Search from "./Search";
 import style from "../style/";
+import Logo from "../style/images/logo.png";
 
 const HeaderContainer = styled.div`
     display: flex;
@@ -19,11 +19,16 @@ const HeaderContainer = styled.div`
     }
 `;
 
+const StyledImg = styled.img`
+    margin: 5rem 0;
+    cursor: pointer;
+`;
+
 const StyledHr = styled.hr`
-    min-width: 400px;
+    min-width: 300px;
     width: 80vw;
     height: 5px;
-    background-color: #564d4d;
+    background-color: ${style.color.gray};
     border-radius: 16px;
     margin-top: 50px;
     border: none;
@@ -32,7 +37,7 @@ const StyledHr = styled.hr`
 const Header = () => {
     return (
         <HeaderContainer>
-            <Title text="What's the movie?" />
+            <StyledImg src={Logo} alt="logo" />
             <Search />
             <StyledHr />
         </HeaderContainer>

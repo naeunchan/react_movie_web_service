@@ -8,9 +8,9 @@ const index = {
         red: "#E50914",
         black: "#000000",
         white: "#ffffff",
-        darkWhite: "#dedede",
-        gray: "#43465e",
-        navy: "#131834",
+        background: "#222222",
+        fontGray: "#bbbbbb",
+        gray: "#3f3f3f",
     },
 };
 export default index;

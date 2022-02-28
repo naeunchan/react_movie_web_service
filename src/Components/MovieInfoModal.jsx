@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import style from "../style";
 import { ModalContext } from "../store/ModalState";
@@ -13,30 +13,45 @@ const ModalBackground = styled.div`
     width: 100vw;
     height: 100vh;
     z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
 `;
 
 const ModalContainer = styled.div`
-    position: absolute;
+    position: fixed;
     display: flex;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 70vw;
-    height: 70vh;
-    background-color: ${style.color.gray};
+    background-color: ${style.color.background};
     border-radius: 16px;
-    overflow-x: hidden;
-    overflow-y: auto;
+    width: 820px;
+    height: 650px;
+    box-shadow: rgb(0 0 0 / 75%) 0px 3px 10px;
+
+    @media ${style.media.sm} {
+        flex-direction: column;
+        width: 350px;
+        height: auto;
+        overflow: auto;
+    }
+
+    @media ${style.media.md} {
+        width: 730px;
+        height: 630px;
+    }
 `;
 
 const InfoContainer = styled.div`
     position: relative;
     display: flex;
     width: 100%;
-    height: auto;
     padding: 1rem;
     flex-direction: column;
+    box-sizing: border-box;
+
+    @media ${style.media.sm} {
+        padding-top: 0;
+    }
 `;
 
 const InfoWrapper = styled.div`
@@ -47,10 +62,20 @@ const InfoWrapper = styled.div`
 const InfoKey = styled.div`
     font-size: 1.3rem;
     margin: 1rem;
+
+    @media ${style.media.sm} {
+        font-size: 1rem;
+        margin: 0.3rem;
+    }
 `;
 
 const InfoValue = styled.div`
     font-size: 1rem;
+    color: ${style.color.fontGray};
+
+    @media ${style.media.sm} {
+        font-size: 0.8rem;
+    }
 `;
 
 const PosterContainer = styled.div`
@@ -58,6 +83,7 @@ const PosterContainer = styled.div`
     justify-content: end;
     width: 100%;
     padding: 1rem;
+    box-sizing: border-box;
 `;
 
 const MovieInfoModal = (props) => {
@@ -67,6 +93,7 @@ const MovieInfoModal = (props) => {
     const handleClickedModalBackground = (e) => {
         if (e.target === e.currentTarget) {
             setModal(false);
+            document.body.style.overflowX = "hidden";
         }
     };
 
