@@ -41,7 +41,7 @@ const MovieListsContainer = styled.div`
 const PosterContainer = styled.div`
     display: flex;
     position: relative;
-    width: 80%;
+    width: 80vw;
     flex-wrap: wrap;
     justify-content: center;
 `;
@@ -53,8 +53,9 @@ const PosterImage = styled.div`
     box-sizing: border-box;
     display: flex;
     flex: auto;
-    max-width: 20%;
+    width: 20%;
     min-width: 170px;
+    max-width: 20%;
     min-height: 240px;
 `;
 
