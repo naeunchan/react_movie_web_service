@@ -35,9 +35,13 @@ const StyledHr = styled.hr`
 `;
 
 const Header = () => {
+    const handleClick = () => {
+        window.location.replace("/");
+    };
+
     return (
         <HeaderContainer>
-            <StyledImg src={Logo} alt="logo" />
+            <StyledImg src={Logo} alt="logo" onClick={handleClick} />
             <Search />
             <StyledHr />
         </HeaderContainer>
